@@ -24,6 +24,7 @@ public class OtpDao {
 			jedisPool = getResourcePool("localhost", 6379);
 			connection = getConnection(jedisPool);
 			connection.set(key, value);
+			connection.expire(key, 30);
 		} catch (Exception e){
 			if (connection != null){
 				returnResource(jedisPool, connection);

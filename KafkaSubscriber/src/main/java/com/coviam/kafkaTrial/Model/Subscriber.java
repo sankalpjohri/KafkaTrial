@@ -12,7 +12,7 @@ public class Subscriber {
 
     @KafkaListener(topics = "Registration")
     public void receiveMessage(String message) {
-        System.out.println("received message= " + message);
+        System.out.println("received message = " + message);
         latch.countDown();
         OtpDao.getInstance().setValue(message, Integer.toString(new Random().nextInt(99999)));
     }
